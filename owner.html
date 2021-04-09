@@ -15,7 +15,9 @@
 
 <body>
     
-    <h1>YourSharedWallet</h1>
+    <h3>YourSharedWallet</h3>
+
+    <h1>Hi Master!</h1>
 
     <div>
         <label>Your account:</label>
@@ -24,28 +26,54 @@
         </select>
     </div>
 
-    <div class="right">
-        <p><a href="owner.html">Go to Owner page</a></p>
+    <div id="other-page-link">
+        <p><a href="index.html">Go to User page</a></p>
     </div>
 
-    <div id="withdraw-box" class="box">        
 
-        <h2>Withdraw Money</h2>
+    <div id="allowance-box" class="box">
 
-        <div class="right">
-            <label>Current Wallet Balance</label>
-            <br>
-            <label id="balance">Loading...</label>
+        <h2>Update allowance for a new/existing user</h2>
+
+        <div>
+            <label>Account:</label>
+            <input id="add-account" title="Paste the account address">
         </div>
 
         <div>
-            <label>Your allowance:</label>
-            <span id="allowance">Loading...</span>
-            <select class="unit-list">
+            <label>Current allowance:</label>
+            <span id="current-allowance">Loading...</span>
+            <select class="unit-list" onchange="changeAlert()">
                 <option value="wei">wei</option>
                 <option value="gwei">gwei</option>
                 <option value="ether">ether</option>
             </select>
+        </div>
+
+        <div>
+            <label>New allowance:</label>
+            <input id="new-allowance" type="number">
+            <select class="unit-list" onchange="changeAlert()">
+                <option value="wei">wei</option>
+                <option value="gwei">gwei</option>
+                <option value="ether">ether</option>
+            </select>
+        </div>
+
+        <div>
+            <button id="update-allowance" type="button" onclick="updateAllowance()">Update Allowance</button>
+        </div>
+
+    </div>
+
+    <div id="withdraw-box" class="box">
+
+        <h2>Withdraw Money</h2>
+        
+        <div class="right">
+            <label>Current Wallet Balance</label>
+            <br>
+            <label id="balance">Loading...</label>
         </div>
 
         <div>
@@ -56,7 +84,7 @@
         <div>
             <label>Amount:</label>
             <input id="amount" type="number">
-            <select class="unit-list">
+            <select class="unit-list" onchange="changeAlert()">
                 <option value="wei">wei</option>
                 <option value="gwei">gwei</option>
                 <option value="ether">ether</option>
@@ -80,6 +108,13 @@
 
     
     <script type="text/javascript" src="index.js"></script>
+
+    <script>
+        function changeAlert() {
+            var select = document.getElementsByClassName("unit-list")[0];
+            alert("Unit changed to "+select.value);
+        }
+    </script>
     
 </body>
 </html>
