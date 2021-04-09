@@ -1,20 +1,35 @@
 body {
-    padding: 30px 30% 0px;
+    margin: 0px;
+    padding: 0px 20% 0px;
+    background-color: #4db6ac;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #263238;
 }
 
-footer.box {
-    margin: 20px 10%;
+h1,h2,h3,h4,h5,h6 {
+    font-family: "Courier New";
+    font-weight: bold;
+}
+
+.top-div {
+    margin: 30px 0px;
+    padding: 20px 10%;
+}
+
+.nav {
+    margin-top: 0px;
+    font-size: 1.1rem;
+    text-align: end;
+    background-color: #26a69a;
+}
+
+.bottom {
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+    background-color: #26a69a;
 }
 
 .box {
-    border: 1px solid;
-    border-radius: 20px;
-    margin: 10px 0px;
-    padding: 20px 15%;
-}
-
-
-
-.right {
-    text-align: right;
+    border: 3px solid;
+    border-radius: 10px;
 }
