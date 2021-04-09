@@ -8,7 +8,7 @@ async function initialize() {
     if (provider) {
         web3 = new Web3(provider);
         console.log("web3 loaded");
-        var accounts = await provider.request({method: 'eth_requestAccounts'});
+        //var accounts = await provider.request({method: 'eth_requestAccounts'});
     }
     else {
         console.log("Metamask not detected");
