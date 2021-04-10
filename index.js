@@ -1,8 +1,15 @@
+var web3;
+
+
 async function initialize() {
 
     if (ethereum && ethereum.isMetaMask) {
+        await ethereum.request({method: "eth_requestAccounts"});
+        loadWeb3();
+        loadInitials();
+        loadResponses();
 
-        let chainId = await ethereum.request({method: "eth_chainId"});
+    /*    let chainId = await ethereum.request({method: "eth_chainId"});
 
         if (chainId == "0x5") {
             startApp(ethereum);
@@ -10,6 +17,7 @@ async function initialize() {
         else {
             alert("Please switch to Goerli Test network\n and make sure you have an account in it.");
         }
+    */
     }
 
     else {
@@ -18,9 +26,8 @@ async function initialize() {
     }
 }
 
-async function startApp(ethereum) {
-
-    let web3 = new Web3(ethereum);
+async function loadWeb3() {
+    web3 = await new Web3(ethereum);
 }
 
 window.addEventListener("DOMContentLoaded", initialize);

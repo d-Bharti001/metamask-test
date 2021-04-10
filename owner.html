@@ -18,9 +18,12 @@
     <div class="top-div">
         <h1>YourSharedWallet</h1>
         <h2>Owner's page</h2>
-        <label>Your account:</label>
-        <select id="account-list">
-            <option value="unselected">Select</option>
+        <label>Wallet Balance:</label>
+        <span id="wallet-balance">Loading...</span>
+        <select id="wallet-balance-units" onchange="">
+            <option value="wei">wei</option>
+            <option value="gwei">gwei</option>
+            <option value="ether">ether</option>
         </select>
     </div>
 
@@ -28,12 +31,12 @@
         <h2>Update allowance for a new/existing user</h2>
         <div>
             <label>Account:</label>
-            <input id="add-account" title="Paste the account address">
+            <input id="new-account" title="Paste the account address">
         </div><br>
         <div>
             <label>Current allowance:</label>
             <span id="current-allowance">Loading...</span>
-            <select class="unit-list" onchange="changeAlert()">
+            <select id="current-allowance-units" onchange="">
                 <option value="wei">wei</option>
                 <option value="gwei">gwei</option>
                 <option value="ether">ether</option>
@@ -42,68 +45,50 @@
         <div>
             <label>New allowance:</label>
             <input id="new-allowance" type="number">
-            <select class="unit-list" onchange="changeAlert()">
+            <select id="new-allowance-units" onchange="">
                 <option value="wei">wei</option>
                 <option value="gwei">gwei</option>
                 <option value="ether">ether</option>
             </select>
         </div><br>
         <div>
-            <button id="update-allowance" type="button" onclick="updateAllowance()">Update Allowance</button>
+            <button id="update-allowance-button" type="button" onclick="">Update Allowance</button>
         </div><br>
     </div>
 
     <div class="top-div box">
         <h2>Deposit Money</h2>
         <div>
-            <label>Wallet Balance:</label>
-            <label id="balance">Loading...</label>
-            <select class="unit-list">
-                <option value="wei">wei</option>
-                <option value="gwei">gwei</option>
-                <option value="ether">ether</option>
-            </select>
-        </div><br>
-        <div>
             <label>Amount:</label>
-            <input id="amount" type="number">
-            <select class="unit-list" onchange="changeAlert()">
+            <input id="deposit-amount" type="number">
+            <select id="deposit-amount-units" onchange="">
                 <option value="wei">wei</option>
                 <option value="gwei">gwei</option>
                 <option value="ether">ether</option>
             </select>
         </div><br>
         <div>
-            <button id="deposit" type="button" onclick="depositTransaction()">Deposit Money</button>
+            <button id="deposit-button" onclick="">Deposit Money</button>
         </div><br>
     </div>
 
     <div class="top-div box">
         <h2>Withdraw Money</h2>
         <div>
-            <label>Wallet Balance:</label>
-            <label id="balance">Loading...</label>
-            <select class="unit-list">
-                <option value="wei">wei</option>
-                <option value="gwei">gwei</option>
-                <option value="ether">ether</option>
-            </select>
-        </div><br>
-        <div>
             <label>Target account:</label>
-            <input id="to-account" title="Paste the account address to send money to">
+            <input id="target-account" title="Paste the account address to send money to">
         </div><br>
         <div>
             <label>Amount:</label>
-            <input id="amount" type="number">
-            <select class="unit-list" onchange="changeAlert()">
+            <input id="withdraw-amount" type="number">
+            <select id="withdraw-amount-units" onchange="">
                 <option value="wei">wei</option>
                 <option value="gwei">gwei</option>
                 <option value="ether">ether</option>
             </select>
         </div><br>
         <div>
-            <button id="withdraw" type="button" onclick="withdrawTransaction()">Withdraw and Send</button>
+            <button id="withdraw-button" onclick="">Withdraw and Send</button>
         </div><br>
     </div>
 
@@ -116,14 +101,7 @@
         <p>Check code on <a href="nowhere">GitHub</a></p>
     </footer>
 
-    <script type="text/javascript" src="index.js"></script>
-
-    <script>
-        function changeAlert() {
-            var select = document.getElementsByClassName("unit-list")[0];
-            alert("Unit changed to " + select.value);
-        }
-    </script>
+    <script type="text/javascript" src="owner.js"></script>
 
 </body>
 </html>

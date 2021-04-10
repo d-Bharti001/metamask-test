@@ -6,9 +6,6 @@
 
     <!--script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js" type="text/javascript"></script-->
 
-    <!-- Bootstrap Library -->
-    <!--link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"-->
-
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
@@ -21,27 +18,21 @@
     <div class="top-div">
         <h1>YourSharedWallet</h1>
         <h2>Users' page</h2>
-        <label>Your account:</label>
-        <select id="account-list">
-            <option value="unselected">Select</option>
+        <label>Wallet Balance:</label>
+        <span id="wallet-balance">Loading...</span>
+        <select id="wallet-balance-units" onchange="">
+            <option value="wei">wei</option>
+            <option value="gwei">gwei</option>
+            <option value="ether">ether</option>
         </select>
     </div>
 
     <div class="top-div box">
         <h2>Withdraw Money</h2>
         <div>
-            <label>Wallet Balance:</label>
-            <label id="balance">Loading...</label>
-            <select class="unit-list">
-                <option value="wei">wei</option>
-                <option value="gwei">gwei</option>
-                <option value="ether">ether</option>
-            </select>
-        </div><br>
-        <div>
             <label>Your allowance:</label>
-            <span id="allowance">Loading...</span>
-            <select class="unit-list">
+            <span id="your-allowance">Loading...</span>
+            <select id="your-allowance-units" onchange="">
                 <option value="wei">wei</option>
                 <option value="gwei">gwei</option>
                 <option value="ether">ether</option>
@@ -49,19 +40,19 @@
         </div><br>
         <div>
             <label>Target account:</label>
-            <input id="to-account" title="Paste the account address to send money to">
+            <input id="target-account" title="Paste the account address to send money to">
         </div><br>
         <div>
             <label>Amount:</label>
-            <input id="amount" type="number">
-            <select class="unit-list">
+            <input id="withdraw-amount" type="number" min="0" value="0">
+            <select id="withdraw-amount-units" onchange="">
                 <option value="wei">wei</option>
                 <option value="gwei">gwei</option>
                 <option value="ether">ether</option>
             </select>
         </div><br>
         <div>
-            <button id="withdraw" type="button" onclick="withdrawTransaction()">Withdraw and Send</button>
+            <button id="withdraw-button" onclick="">Withdraw and Send</button>
         </div><br>
     </div>
 
