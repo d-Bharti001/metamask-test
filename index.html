@@ -2,10 +2,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-
-    <!--script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js" type="text/javascript"></script-->
-
+    <title>Shared Wallet - web interface</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js" type="text/javascript"></script>
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
@@ -20,7 +18,7 @@
         <h2>Users' page</h2>
         <label>Wallet Balance:</label>
         <span id="wallet-balance">Loading...</span>
-        <select id="wallet-balance-units" onchange="">
+        <select id="wallet-balance-units" onchange="updateWalletBalanceContent()">
             <option value="wei">wei</option>
             <option value="gwei">gwei</option>
             <option value="ether">ether</option>
@@ -32,7 +30,7 @@
         <div>
             <label>Your allowance:</label>
             <span id="your-allowance">Loading...</span>
-            <select id="your-allowance-units" onchange="">
+            <select id="your-allowance-units" onchange="updateYourAllowanceContent()">
                 <option value="wei">wei</option>
                 <option value="gwei">gwei</option>
                 <option value="ether">ether</option>
@@ -40,19 +38,19 @@
         </div><br>
         <div>
             <label>Target account:</label>
-            <input id="target-account" title="Paste the account address to send money to">
+            <input id="target-account" value="0x000" title="Paste the account address to send money to">
         </div><br>
         <div>
             <label>Amount:</label>
-            <input id="withdraw-amount" type="number" min="0" value="0">
-            <select id="withdraw-amount-units" onchange="">
+            <input id="withdraw-amount" type="number" pattern="^[0-9]" min="0" step="1" value="0">
+            <select id="withdraw-amount-units">
                 <option value="wei">wei</option>
                 <option value="gwei">gwei</option>
                 <option value="ether">ether</option>
             </select>
         </div><br>
         <div>
-            <button id="withdraw-button" onclick="">Withdraw and Send</button>
+            <button id="withdraw-button" onclick="withdrawTransaction()">Withdraw and Send</button>
         </div><br>
     </div>
 
@@ -62,10 +60,11 @@
         <p>Smart Contract deployed on Goerli Test network</p>
         <p>Contract's address: 0x123abcdef</p>
         <p>Owner's address: 0xbc1234</p>
-        <p>Check code on <a href="nowhere">GitHub</a></p>
+        <p>For usage and other details, check project on <a href="nowhere">GitHub</a></p>
     </footer>
 
-    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="js/abi.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
 
 </body>
 </html>

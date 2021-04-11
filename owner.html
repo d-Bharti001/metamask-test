@@ -2,10 +2,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-
-    <!--script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js" type="text/javascript"></script -->
-
+    <title>Shared Wallet - web interface</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js" type="text/javascript"></script>
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
@@ -20,7 +18,7 @@
         <h2>Owner's page</h2>
         <label>Wallet Balance:</label>
         <span id="wallet-balance">Loading...</span>
-        <select id="wallet-balance-units" onchange="">
+        <select id="wallet-balance-units" onchange="updateWalletBalanceContent()">
             <option value="wei">wei</option>
             <option value="gwei">gwei</option>
             <option value="ether">ether</option>
@@ -34,25 +32,25 @@
             <input id="new-account" title="Paste the account address">
         </div><br>
         <div>
-            <label>Current allowance:</label>
-            <span id="current-allowance">Loading...</span>
-            <select id="current-allowance-units" onchange="">
-                <option value="wei">wei</option>
-                <option value="gwei">gwei</option>
-                <option value="ether">ether</option>
-            </select>
-        </div><br>
-        <div>
             <label>New allowance:</label>
-            <input id="new-allowance" type="number">
-            <select id="new-allowance-units" onchange="">
+            <input id="new-allowance" type="number" pattern="^[0-9]" min="0" step="1" value="0">
+            <select id="new-allowance-units">
                 <option value="wei">wei</option>
                 <option value="gwei">gwei</option>
                 <option value="ether">ether</option>
             </select>
         </div><br>
         <div>
-            <button id="update-allowance-button" type="button" onclick="">Update Allowance</button>
+            <button id="current-allowance-button" type="button" onclick="updateCurrentAllowance()">Show Current Allowance</button>
+            <span id="current-allowance">...</span>
+            <select id="current-allowance-units" onchange="updateCurrentAllowanceContent()">
+                <option value="wei">wei</option>
+                <option value="gwei">gwei</option>
+                <option value="ether">ether</option>
+            </select>
+        </div><br>
+        <div>
+            <button id="update-allowance-button" type="button" onclick="allowanceTransaction()">Update Allowance</button>
         </div><br>
     </div>
 
@@ -60,15 +58,15 @@
         <h2>Deposit Money</h2>
         <div>
             <label>Amount:</label>
-            <input id="deposit-amount" type="number">
-            <select id="deposit-amount-units" onchange="">
+            <input id="deposit-amount" type="number" pattern="^[0-9]" min="0" step="1" value="0">
+            <select id="deposit-amount-units">
                 <option value="wei">wei</option>
                 <option value="gwei">gwei</option>
                 <option value="ether">ether</option>
             </select>
         </div><br>
         <div>
-            <button id="deposit-button" onclick="">Deposit Money</button>
+            <button id="deposit-button" onclick="depositTransaction()">Deposit Money</button>
         </div><br>
     </div>
 
@@ -80,28 +78,29 @@
         </div><br>
         <div>
             <label>Amount:</label>
-            <input id="withdraw-amount" type="number">
-            <select id="withdraw-amount-units" onchange="">
+            <input id="withdraw-amount" type="number" pattern="^[0-9]" min="0" step="1" value="0">
+            <select id="withdraw-amount-units">
                 <option value="wei">wei</option>
                 <option value="gwei">gwei</option>
                 <option value="ether">ether</option>
             </select>
         </div><br>
         <div>
-            <button id="withdraw-button" onclick="">Withdraw and Send</button>
+            <button id="withdraw-button" onclick="withdrawTransaction()">Withdraw and Send</button>
         </div><br>
     </div>
 
     <footer class="top-div bottom">
-        <p>Wallet details</p>
+        <h3>Wallet details</h3>
         <hr>
         <p>Smart Contract deployed on Goerli Test network</p>
         <p>Contract's address: 0x123abcdef</p>
         <p>Owner's address: 0xbc1234</p>
-        <p>Check code on <a href="nowhere">GitHub</a></p>
+        <p>For usage and other details, check project on <a href="nowhere">GitHub</a></p>
     </footer>
 
-    <script type="text/javascript" src="owner.js"></script>
+    <script type="text/javascript" src="js/abi.js"></script>
+    <script type="text/javascript" src="js/owner.js"></script>
 
 </body>
 </html>
