@@ -1,5 +1,5 @@
 const ethereum = window.ethereum;
-const CONTRACT_ADDR = "0x1a9F6cf666776274B3deaf6517026CD04EeEb9d1";
+const CONTRACT_ADDR = "0x38Df4420e266b70FCbFE928d649cfE027ccbB87b";
 var web3;
 var contract;
 var userAddress = "";
@@ -7,22 +7,20 @@ var savedWalletBalance = "0";
 var savedAllowance = "0";
 
 async function initialize() {
-
     if (ethereum && ethereum.isMetaMask) {
-
         let chainId = await ethereum.request({method: "eth_chainId"});
-
-        if (chainId == "0x539") {
+        if (chainId == "0x2a") {
             initializeContents();
         }
         else {
-            alert("Please switch to Goerli Test network\n and make sure you have an account in it.");
+            alert("Please switch to Kovan Test network\
+            \nAnd make sure you have an account in it.");
         }
     }
 
     else {
-        alert("Please install Metamask extension and create an account on Goerli test network.\
-        \nNo functionality can work without it.");
+        alert("Metamask extension missing!\
+        \nPlease install Metamask and create an account on Kovan test network.");
     }
 }
 
