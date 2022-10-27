@@ -1,5 +1,5 @@
 # Shared Wallet
-#### A smart contract deployed on Kovan Test Network
+#### A smart contract deployed on Goerli Test Network
 
 ---
 
@@ -24,7 +24,7 @@
 ### Requirements
 
 1. Metamask extension for the web browser
-2. An account on Kovan Test Network
+2. An account on Goerli Test Network
 3. For users only - some _allowance_ provided by _the owner of the wallet_ to withdraw money from the wallet
 
 ### Users' page
